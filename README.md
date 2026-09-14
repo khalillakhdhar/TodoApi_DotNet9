@@ -16,7 +16,15 @@ API REST de gestion de taches construite avec ASP.NET Core, Entity Framework Cor
 
 ## Configuration
 
-La chaine de connexion se trouve dans `appsettings.json` :
+La configuration locale peut etre placee dans `.env`, qui est ignore par Git :
+
+```env
+ASPNETCORE_ENVIRONMENT=Development
+ASPNETCORE_URLS=http://+:5080
+ConnectionStrings__DefaultConnection=Server=localhost;Database=TodoDb;User Id=sa;Password=CHANGE_ME;TrustServerCertificate=True;Encrypt=True
+```
+
+Si `.env` est absent, l'application utilise la chaine de connexion de secours dans `appsettings.json` :
 
 ```json
 {
@@ -26,7 +34,7 @@ La chaine de connexion se trouve dans `appsettings.json` :
 }
 ```
 
-Pour une configuration locale, utilisez plutot `appsettings.Local.json` ou des secrets utilisateur afin d'eviter de versionner des mots de passe reels.
+Pour une configuration locale, utilisez `.env`, `appsettings.Local.json` ou des secrets utilisateur afin d'eviter de versionner des mots de passe reels.
 
 ## Lancer le projet
 
@@ -41,6 +49,14 @@ Swagger est ensuite disponible sur :
 ```text
 http://localhost:5080/swagger
 https://localhost:7080/swagger
+```
+
+## Docker
+
+Les fichiers `Dockerfile`, `docker-compose.yml` et `.dockerignore` preparent un futur deploiement sur VPS. `docker-compose.yml` charge les variables depuis `.env`.
+
+```powershell
+docker compose up --build
 ```
 
 ## Endpoints principaux
