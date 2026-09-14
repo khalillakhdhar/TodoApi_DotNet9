@@ -1,0 +1,39 @@
+@TodoApi_HostAddress = http://localhost:5080
+
+### Get all todos
+GET {{TodoApi_HostAddress}}/api/todos
+Accept: application/json
+
+###
+
+### Create todo
+POST {{TodoApi_HostAddress}}/api/todos
+Content-Type: application/json
+
+{
+  "title": "Apprendre .NET 9",
+  "description": "Créer une API Todo avec SQL Server"
+}
+
+###
+
+### Get todo by id
+GET {{TodoApi_HostAddress}}/api/todos/1
+Accept: application/json
+
+###
+
+### Update todo
+PUT {{TodoApi_HostAddress}}/api/todos/1
+Content-Type: application/json
+
+{
+  "title": "Apprendre .NET 9",
+  "description": "API Todo terminée",
+  "isCompleted": true
+}
+
+###
+
+### Delete todo
+DELETE {{TodoApi_HostAddress}}/api/todos/1
