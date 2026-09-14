@@ -5,15 +5,23 @@ using TodoApi.Models;
 
 namespace TodoApi.Services;
 
+/// <summary>
+/// Service applicatif responsable des operations CRUD des taches.
+/// </summary>
 public class TodoService : ITodoService
 {
     private readonly AppDbContext _context;
 
+    /// <summary>
+    /// Initialise une nouvelle instance du service des taches.
+    /// </summary>
+    /// <param name="context">Contexte de donnees de l'application.</param>
     public TodoService(AppDbContext context)
     {
         _context = context;
     }
 
+    /// <inheritdoc />
     public async Task<IEnumerable<TodoDto>> GetAllAsync()
     {
         return await _context.Todos
@@ -30,6 +38,7 @@ public class TodoService : ITodoService
             .ToListAsync();
     }
 
+    /// <inheritdoc />
     public async Task<TodoDto?> GetByIdAsync(int id)
     {
         return await _context.Todos
@@ -46,6 +55,7 @@ public class TodoService : ITodoService
             .FirstOrDefaultAsync();
     }
 
+    /// <inheritdoc />
     public async Task<TodoDto> CreateAsync(CreateTodoDto dto)
     {
         var todo = new TodoItem
@@ -62,6 +72,7 @@ public class TodoService : ITodoService
         return Map(todo);
     }
 
+    /// <inheritdoc />
     public async Task<TodoDto?> UpdateAsync(int id, UpdateTodoDto dto)
     {
         var todo = await _context.Todos.FindAsync(id);
@@ -80,6 +91,7 @@ public class TodoService : ITodoService
         return Map(todo);
     }
 
+    /// <inheritdoc />
     public async Task<bool> DeleteAsync(int id)
     {
         var todo = await _context.Todos.FindAsync(id);

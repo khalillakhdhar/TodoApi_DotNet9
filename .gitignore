@@ -1,11 +1,54 @@
-bin/
-obj/
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+publish/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# Visual Studio / Rider / VS Code
 .vs/
+.idea/
 .vscode/
 *.user
+*.userosscache
 *.suo
-*.log
+*.rsuser
+*.DotSettings.user
+
+# .NET
+project.lock.json
+project.assets.json
+artifacts/
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+*.trx
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+*.nuget.props
+*.nuget.targets
 
 # Local secrets / environment
 .env
+.env.*
+!.env.example
 appsettings.Local.json
+appsettings.*.Local.json
+secrets.json
+
+# OS files
+.DS_Store
+Thumbs.db
