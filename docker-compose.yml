@@ -1,9 +1,36 @@
 services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: todo-sqlserver
+    environment:
+      
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "${MSSQL_SA_PASSWORD}"
+    
+    volumes:
+      - todo_sql_data:/var/opt/mssql
+    networks:
+      - todo-network
+
   todoapi:
     build:
       context: .
       dockerfile: Dockerfile
-    env_file:
-      - .env
+    container_name: todoapi
+    environment:
+      ASPNETCORE_ENVIRONMENT: "production"
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=TodoDb;User Id=sa;Password=${Password};TrustServerCertificate=True;Encrypt=True"
     ports:
-      - "5080:5080"
+      - "8080:8080"
+    depends_on:
+      - sqlserver
+    networks:
+      - todo-network
+    restart: unless-stopped
+
+networks:
+  todo-network:
+
+volumes:
+  todo_sql_data:
+            
