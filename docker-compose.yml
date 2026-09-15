@@ -19,7 +19,7 @@ services:
     container_name: todoapi
     environment:
       ASPNETCORE_ENVIRONMENT: "production"
-      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=TodoDb;User Id=sa;Password=CHANGE_ME;TrustServerCertificate=True;Encrypt=True"
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=TodoDb;User Id=sa;Password=ChangeMe123!;TrustServerCertificate=True;Encrypt=True"
     ports:
       - "5080:5080"
     depends_on:
