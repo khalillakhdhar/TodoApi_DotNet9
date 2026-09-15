@@ -21,7 +21,7 @@ services:
       ASPNETCORE_ENVIRONMENT: "production"
       ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=TodoDb;User Id=sa;Password=CHANGE_ME;TrustServerCertificate=True;Encrypt=True"
     ports:
-      - "5080:5000"
+      - "5080:5080"
     depends_on:
       - sqlserver
     networks:
