@@ -5,7 +5,7 @@ services:
     environment:
       
       ACCEPT_EULA: "Y"
-      MSSQL_SA_PASSWORD: "${MSSQL_SA_PASSWORD}"
+      MSSQL_SA_PASSWORD: ChangeMe123!
     
     volumes:
       - todo_sql_data:/var/opt/mssql
@@ -19,7 +19,7 @@ services:
     container_name: todoapi
     environment:
       ASPNETCORE_ENVIRONMENT: "production"
-      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=TodoDb;User Id=sa;Password=${Password};TrustServerCertificate=True;Encrypt=True"
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=TodoDb;User Id=sa;Password=CHANGE_ME;TrustServerCertificate=True;Encrypt=True"
     ports:
       - "8080:8080"
     depends_on:
